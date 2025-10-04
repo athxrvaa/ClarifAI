@@ -1,0 +1,131 @@
+/* extension/styles.css */
+
+/* Main widget container */
+#sustainability-widget-clarifai {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 20px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(145deg, #ffffff, #f9f9f9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    max-width: 400px;
+}
+
+#sustainability-widget-clarifai:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Header section with logo and title */
+.clarifai-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 12px;
+}
+
+.clarifai-logo {
+    width: 28px;
+    height: 28px;
+}
+
+/* Main body content */
+.clarifai-body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Score circle */
+.clarifai-score-container {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 5px solid #ccc; /* Default color */
+    transition: border-color 0.5s ease;
+}
+
+.clarifai-score {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Summary and details section */
+.clarifai-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.clarifai-summary, .clarifai-error {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.clarifai-error {
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+/* "Show Details" toggle link */
+.clarifai-details-toggle {
+    font-size: 12px;
+    color: #3498db;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 8px;
+    display: block;
+}
+
+/* The hidden details panel */
+.clarifai-details-panel {
+    display: none; /* Hidden by default */
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+}
+
+.clarifai-detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+}
+
+.clarifai-detail-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.clarifai-detail-value {
+    color: #555;
+}
+
+/* CSS Loader animation */
+.clarifai-loader {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 32px;
+    height: 32px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

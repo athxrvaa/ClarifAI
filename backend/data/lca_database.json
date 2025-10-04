@@ -1,0 +1,39 @@
+{
+    "materials": {
+    "recycled aluminum": { "carbon_kg": 1.5, "water_l": 20, "eol_score": 9, "recyclability": "high", "decomposition": "Highly recyclable at dedicated facilities." },
+    "aluminum": { "carbon_kg": 9.2, "water_l": 85, "eol_score": 8, "recyclability": "high", "decomposition": "Highly recyclable with minimal quality loss." },
+    "steel": { "carbon_kg": 1.8, "water_l": 35, "eol_score": 9, "recyclability": "high", "decomposition": "Infinitely recyclable at metal recycling facilities." },
+    "stainless steel": { "carbon_kg": 6.1, "water_l": 50, "eol_score": 8, "recyclability": "high", "decomposition": "Highly durable and recyclable." },
+    "cotton": { "carbon_kg": 5.8, "water_l": 8000, "eol_score": 6, "recyclability": "compostable", "decomposition": "Biodegradable if 100% natural, but cannot be recycled if blended with synthetics." },
+    "polyester": { "carbon_kg": 6.5, "water_l": 20, "eol_score": 3, "recyclability": "low", "decomposition": "Not biodegradable. Requires specialized textile recycling; otherwise, it's landfill." },
+    "glass screen": { "carbon_kg": 1.2, "water_l": 20, "eol_score": 5, "recyclability": "low", "decomposition": "Composite material that is difficult to recycle. Must be treated as e-waste." },
+    "plastic": { "carbon_kg": 2.5, "water_l": 10, "eol_score": 3, "recyclability": "low", "decomposition": "Can be downcycled if sorted correctly, but many types end up in landfill." },
+    "rubber": { "carbon_kg": 4.0, "water_l": 50, "eol_score": 2, "recyclability": "none", "decomposition": "Not recyclable in household systems. Often goes to landfill or is incinerated." },
+    "eva foam": { "carbon_kg": 3.0, "water_l": 15, "eol_score": 2, "recyclability": "none", "decomposition": "A type of plastic foam that is not recyclable." },
+    "silicone": { "carbon_kg": 5.0, "water_l": 25, "eol_score": 3, "recyclability": "low", "decomposition": "Requires specialized industrial recycling, not available in most areas." },
+    "lithium-ion battery": { "carbon_kg": 30.0, "water_l": 600, "eol_score": 1, "recyclability": "e-waste", "decomposition": "Hazardous e-waste. Contains valuable but toxic materials. Must be taken to a designated collection point." }
+  },
+  "transport": {
+    "sea_freight_km": 0.015
+  },
+  "manufacturing_locations": {
+    "China": { "carbon_intensity_kwh": 0.57 },
+    "USA": { "carbon_intensity_kwh": 0.37 },
+    "Germany": { "carbon_intensity_kwh": 0.34 },
+    "Vietnam": { "carbon_intensity_kwh": 0.45 },
+    "India": { "carbon_intensity_kwh": 0.65 },
+    "default": { "carbon_intensity_kwh": 0.43 }
+  },
+  "brands_origin": {
+    "boat": "India",
+    "apple": "USA",
+    "samsung": "Vietnam",
+    "corsac": "default"
+  },
+  "product_category_inference": {
+    "watch": ["lithium-ion battery", "glass screen", "aluminum"],
+    "phone": ["lithium-ion battery", "glass screen", "aluminum"],
+    "shirt": ["cotton"],
+    "shoe": ["rubber", "plastic", "eva foam", "polyester"]
+  }
+}

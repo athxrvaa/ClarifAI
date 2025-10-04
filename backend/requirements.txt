@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+requests
+beautifulsoup4
+pandas
+transformers[torch]
+scikit-learn
+
+
+#  <div class="breakdown-item">
+#                 <span class="breakdown-label">Manufacturing Origin:</span>
+#                 <span class="breakdown-value">${identified.manufacturing_location}</span>
+#             </div>
