@@ -5,10 +5,10 @@ from pydantic import BaseModel, HttpUrl
 import uvicorn
 
 # --- Import all necessary modules from the 'core' package ---
-from .core.scraper import scrape_product_page
-from .core.analyzer import extract_product_components
-from .core.lca_calculator import calculate_lca_score
-from .core.image_analyzer import analyze_product_image
+from core.scraper import scrape_product_page
+from core.analyzer import extract_product_components
+from core.lca_calculator import calculate_lca_score
+from core.image_analyzer import analyze_product_image
 
 # --- Initialize the FastAPI application ---
 app = FastAPI(
