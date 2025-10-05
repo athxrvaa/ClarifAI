@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "manifest_version": 3,
   "name": "AI Sustainability Analyzer (Inline)",
@@ -31,38 +30,4 @@
     "48": "icon48.png",
     "128": "icon128.png"
   }
-=======
-{
-  "manifest_version": 3,
-  "name": "AI Sustainability Analyzer (Inline)",
-  "version": "2.1",
-  "description": "Injects a sustainability score directly onto any e-commerce product page.",
-  "permissions": [
-    "storage"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "css": ["styles.css"]
-    }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": ["icon48.png"],
-      "matches": ["<all_urls>"]
-    }
-  ],
-  "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
-  }
->>>>>>> 2ae3776 (Initial commit for deployment)
 }
