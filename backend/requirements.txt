@@ -5,7 +5,7 @@ beautifulsoup4
 pandas
 transformers[torch]
 scikit-learn
-
+groq
 
 #  <div class="breakdown-item">
 #                 <span class="breakdown-label">Manufacturing Origin:</span>

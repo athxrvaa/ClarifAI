@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ClarifAI — Project Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Documentation for the ClarifAI project: overview, architecture, how it works, setup, and impacts." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>ClarifAI</h1>
+      <p class="tagline">A lightweight tool for analyzing product images and estimating life-cycle impacts.</p>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="container">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#setup">Setup & Run</a>
+      <a href="#impacts">Impacts & Benefits</a>
+      <a href="#files">Files & Components</a>
+      <a href="#contributing">Contributing</a>
+    </div>
+  </nav>
+
+  <main class="container content">
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>
+        ClarifAI is a compact research/utility project that extracts information from product images and web data, analyzes environmental life-cycle attributes (LCA), and surfaces scoring and narrative outputs. It combines scraping, image analysis, LCA estimation and small AI-driven prompts to produce human-friendly summaries.
+      </p>
+      <p>
+        The project ships with a backend Python service (under <code>backend/</code>), a set of core modules (<code>core/</code>), a browser extension stub (<code>extension/</code>), and notebook experiments (<code>notebook/</code>).
+      </p>
+    </section>
+
+    <section id="architecture">
+      <h2>Architecture</h2>
+      <p>High-level components and responsibilities:</p>
+      <ul>
+        <li><strong>backend/</strong> — Entrypoint(s) and orchestration. Runs scraping, scoring and exposes CLI/runner logic.</li>
+        <li><strong>core/</strong> — Domain logic (scraper, analyzer, image processing, LCA calculator, prompts).</li>
+        <li><strong>extension/</strong> — Browser extension assets for demonstrating in-page integration (content & background scripts, icons).</li>
+        <li><strong>notebook/</strong> — Experimental analysis and data-scraping notebooks.</li>
+      </ul>
+
+      <h3>Component diagram (text)</h3>
+      <pre class="diagram">
+  [Web / Image Source] --> [scraper.py] --> [core.image_analyzer]
+                                     |--> [lca_calculator.py] --> [scoring]
+                                     |--> [ai_prompts.py] --> [narratives]
+      </pre>
+    </section>
+
+    <section id="how-it-works">
+      <h2>How it works</h2>
+      <ol>
+        <li>Scrape or ingest product pages / image URLs using <code>backend/main.py</code> and <code>core/scraper.py</code>.</li>
+        <li>Analyze images and extract attributes via <code>core/image_analyzer.py</code> (this may call an ML model or heuristics).</li>
+        <li>Estimate life-cycle impacts using <code>core/lca_calculator.py</code> and the <code>data/lca_database.json</code> dataset.</li>
+        <li>Score and generate human-readable narratives using the prompt utilities in <code>core/ai_prompts.py</code>.</li>
+        <li>Optionally present results through the browser extension or export to files/notebook for review.</li>
+      </ol>
+
+      <h3>Data flow and formats</h3>
+      <p>
+        Input: image urls, product metadata scraped from websites. Output: JSON objects containing LCA estimates, scores, and generated summaries.
+      </p>
+    </section>
+
+    <section id="setup">
+      <h2>Setup & Run</h2>
+      <p>Requirements are declared in <code>backend/requirements.txt</code>. Create a virtual environment, install dependencies, and run the main script.</p>
+
+      <h3>Quick start (Windows PowerShell)</h3>
+      <pre class="cmd"># Create and activate a venv; install requirements
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r backend/requirements.txt
+
+# Run the backend (example)
+python backend\main.py
+      </pre>
+
+      <p>If you prefer to experiment interactively, open <code>notebook/01_data_scraping_test.ipynb</code> in Jupyter.</p>
+    </section>
+
+    <section id="files">
+      <h2>Files & Components</h2>
+      <h3><code>backend/main.py</code></h3>
+      <p>Top-level runner that ties scraping, analysis and scoring together. Use it as the main entrypoint for batch tasks.</p>
+
+      <h3><code>core/</code></h3>
+      <ul>
+        <li><code>analyzer.py</code> — Aggregates analysis steps and orchestrates core functions.</li>
+        <li><code>image_analyzer.py</code> — Image feature extraction and pre-processing.</li>
+        <li><code>lca_calculator.py</code> — Uses <code>data/lca_database.json</code> to estimate environmental impacts.</li>
+        <li><code>scraper.py</code> — Contains scraping logic for fetching product pages and assets.</li>
+        <li><code>ai_prompts.py</code> — Utilities that shape AI prompts for narrative generation.</li>
+      </ul>
+
+      <h3><code>extension/</code></h3>
+      <p>Minimal browser extension assets to demonstrate front-end integration (content/background scripts and icons).</p>
+    </section>
+
+    <section id="impacts">
+      <h2>Impacts & Benefits</h2>
+      <h3>Environmental & Research benefits</h3>
+      <ul>
+        <li>Provides quick, reproducible LCA estimates to support greener product decisions.</li>
+        <li>Enables researchers to prototype image-based LCA pipelines without heavy infrastructure.</li>
+      </ul>
+
+      <h3>Practical benefits</h3>
+      <ul>
+        <li>Automates labor-intensive scraping and initial analysis steps.</li>
+        <li>Produces human-friendly narratives that help communicate complex LCA results.</li>
+        <li>Lightweight and modular — easy to extend with more accurate models or larger datasets.</li>
+      </ul>
+
+      <h3>Limitations</h3>
+      <ul>
+        <li>Estimates are only as good as the heuristics, models and LCA database provided.</li>
+        <li>Scraping reliability depends on website structure; use responsibly and follow robots.txt.</li>
+      </ul>
+    </section>
+
+    <section id="contributing">
+      <h2>Contributing & Next steps</h2>
+      <p>Ideas for improvements:</p>
+      <ul>
+        <li>Integrate a more accurate image model (e.g., a fine-tuned classifier) for material detection.</li>
+        <li>Expand <code>data/lca_database.json</code> with more product categories and regional factors.</li>
+        <li>Add tests for the core calculators and a lightweight API server to expose results.</li>
+      </ul>
+
+      <p>To contribute, fork the repo, add tests, and open a pull request describing the changes.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>ClarifAI documentation — generated static doc. Open <code>docs/index.html</code> in your browser to view locally.</p>
+    </div>
+  </footer>
+</body>
+</html>
