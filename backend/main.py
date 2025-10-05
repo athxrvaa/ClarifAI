@@ -86,5 +86,6 @@ def assess_product_impact(product: ProductURL):
 
 # This block allows running the server directly for local development.
 # Render will use the 'Start Command' you provided, not this block.
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
